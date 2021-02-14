@@ -87,22 +87,7 @@ const KeyboardMain: React.FC<any> = () => {
 
   const [timerTime, setTimerTime] = useState(0);
 
-  const startTimer = () => {
-    timerRef = setInterval(() => {
-      setTimerTime(time => time + TIMER_TIME);
-    }, TIMER_TIME)
-  }
-
   const user = store.getState().user;
-
-  const stopTimer = () => {
-    if (timerRef) {
-      setCurrentTime(timerTime)
-      clearInterval(timerRef);
-      setTimerTime(0);
-      timerRef = null;
-    }
-  }
 
   const handleLevelSelect = (e: any) => {
     const lesson = lessonsList.find(({ number }) => number === e.target.value);
@@ -140,31 +125,6 @@ const KeyboardMain: React.FC<any> = () => {
       })
   }
 
-  const handleErrorsGet = (updatedCountErrors: number) => {
-    if (!selectedLevel) {
-      return;
-    }
-
-    // if (selectedLevel?.errorsAllowed > updatedCountErrors) {
-    //   setCountErrors(updatedCountErrors);
-    //   return;
-    // }
-
-    // sendResult(1, false);
-    clearKeyboardEffects();
-    setOpenFailureModal(true);
-  }
-
-  const handleLostKeyPress = () => {
-    if (!isStartedExercise) {
-      return;
-    }
-
-    // sendResult(0, false);
-    clearKeyboardEffects();
-    setOpenFailureModal(true);
-  }
-
   const handleA = () => {
     if (answerFirst === 'Они нарушили право собственности, гарантированное статьей 35 Конституции РФ!') {
       setCountErrors(countErrors + 1)
@@ -186,7 +146,6 @@ const KeyboardMain: React.FC<any> = () => {
     if (answerSecond === 'Да ничего не делай, может тебя оправдают.') {
       setCountErrors(countErrors + 1)
     }
-
     setIsAnsweringState(false)
     changeText()
   }
@@ -197,18 +156,11 @@ const KeyboardMain: React.FC<any> = () => {
     }
     changeText()
 
-    if (isStartedExercise) {
-      clearKeyboardEffects();
-    } else {
-      // startTimer();
-    }
-
     setStartedExercise(true);
   }
 
   const handleLessonFinish = () => {
     sendResult(0, true);
-    clearKeyboardEffects();
     setOpenSuccessModal(true);
   }
 
@@ -216,26 +168,11 @@ const KeyboardMain: React.FC<any> = () => {
     setOpenSuccessModal(false);
   }
 
-  const handleFailureModalClose = () => {
-    clearKeyboardEffects();
-    setOpenFailureModal(false);
-  }
-
-  function clearKeyboardEffects () {
-    stopTimer();
-    setKeyPressTime(0);
-    // setCountErrors(0);
-    // setStartedExercise(false);
-  }
-
   useEffect(() => {
     getAllLevels();
   }, []);
 
   const sendResult = (increment: number, isSucsess: boolean) => {
-    // if (timerTime === 0) {
-    //   return;
-    // }
     const payload = JSON.stringify({
       userName: user.userName,
       exerciseName: levelName,
@@ -513,12 +450,6 @@ const KeyboardMain: React.FC<any> = () => {
             text={`Поздравляем: ы`}
             onClose={handleSuccesModalClose}
             isOpen={isSuccesModalOpen}
-        />
-        <TextModal
-            label="Пройдено"
-            text="Стоит ь!"
-            onClose={handleFailureModalClose}
-            isOpen={isFailureModalOpen}
         />
         </Grid>
         </Grid>

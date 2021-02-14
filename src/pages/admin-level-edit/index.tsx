@@ -1,8 +1,7 @@
 /* eslint-disable no-unreachable */
 /* eslint-disable prefer-promise-reject-errors */
 import { Box, Button, Grid, InputLabel, makeStyles, MenuItem, Select, TextareaAutosize, TextField } from "@material-ui/core";
-import { AssignmentReturnOutlined } from "@material-ui/icons";
-import React, { ChangeEvent, FormEvent, useRef, useState } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles({

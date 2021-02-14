@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paper, withStyles, Grid, TextField, Button, FormControlLabel, Checkbox } from '@material-ui/core'
+import { Paper, withStyles, Grid, TextField, Button } from '@material-ui/core'
 import { Face, Fingerprint } from '@material-ui/icons'
 import { connect } from 'react-redux'
 import { loginActionSuccess } from '../../store/actions'
@@ -251,17 +251,8 @@ class LoginTab extends React.Component<any, any> {
       </>
   )
 
-  handleAboutDevelopersModalOpen = () => {
-    this.setState({ isOpenAboutDevelopers: true })
-  }
-
-  handleAboutDevelopersModalClose = () => {
-    this.setState({ isOpenAboutDevelopers: false })
-  }
-
   render () {
     const { classes } = this.props as any
-    const { isOpenAboutDevelopers } = this.state;
     return (
         <div className={classes.mainContainer}>
           <div className={classes.center}>

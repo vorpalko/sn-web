@@ -1,13 +1,12 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
 import { connect, Provider } from 'react-redux'
-import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import store from './store'
 import { LoginScreen } from './pages/login'
 import { Store } from './store/reducers'
 import AdminLayerWrapper from './components/AdminRouter'
 import KeyboardMain from './pages/keyboard-main'
-import UserStatistics from './pages/user-statistics'
 
 const GuardBase = ({ children, user }: any) => {
   return user.hasAuth ? children : <LoginScreen/>
@@ -28,7 +27,6 @@ function App () {
       <RouteGuard>
         <Switch>
           <Route path="/keyboard"><KeyboardMain /></Route>
-          <Route path="/user-statistics"><UserStatistics /></Route>
           <Route
             path="/admin"
             render={(props) => (
