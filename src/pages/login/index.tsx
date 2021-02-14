@@ -98,7 +98,6 @@ class LoginTab extends React.Component<any, any> {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: this.state.emailRegister, password: this.state.passwordRegister })
     };
-    
     fetch('https://powerful-fjord-90262.herokuapp.com/api/signup', requestOptions)
       .then(response => response.json())
       .then((x: any) => {
