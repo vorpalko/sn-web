@@ -1,10 +1,7 @@
-import { Box, Button, Card, CardActions, CardContent, Container, Grid, makeStyles, MenuItem, Select, TextareaAutosize, TextField, Typography } from '@material-ui/core';
-import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
-import { FullKeyboard } from '../../components/Keyboard';
+import { Button, Grid, makeStyles, MenuItem, Select } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
 import { TextModal } from '../../components/TextModal';
 import { useHistory } from 'react-router-dom';
-import { connect, Provider } from 'react-redux';
-import { Store } from '../../store/reducers';
 import store from '../../store';
 
 const b11 = '/images/b11.jpg'
@@ -13,21 +10,6 @@ const b13 = '/images/b13.jpg'
 const b14 = '/images/b14.jpg'
 
 const fGg = '/gays/f1_gg.png'
-const fPolice = '/gays/f_police.png'
-const f1Friend = '/gays/f1_friend.png'
-const f1Student = '/gays/f1_student.png'
-const f2Attackers = '/gays/f2_attackers.png'
-const f2Bleeding = '/gays/f2_bleeding.png'
-const f2Knife = '/gays/f2_knife_guy.png'
-const f2Man = '/gays/f2_man.png'
-const f3Child = '/gays/f3_child.png'
-const f3Chineese = '/gays/f3_chineese.png'
-const f3Passer = '/gays/f3_passer.png'
-const f4Cuckold = '/gays/f4_cuckold.png'
-const f4Elder = '/gays/f4_elder.png'
-const f4Woman = '/gays/f4_woman.png'
-const f4Young = '/gays/f4_young.png'
-
 const f1s2 = '/gays/f1s2.png'
 const f1s3 = '/gays/f1s3.png'
 const b31Fg = '/gays/b31_fg.png'
